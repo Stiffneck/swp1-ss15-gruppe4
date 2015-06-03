@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -7,6 +8,7 @@ import javax.swing.JFrame;
 
 public class Mainframe extends JFrame {
 	private Menuleiste menuleiste;
+	private StationslistePanel stationslistepanel;
 	
 	public Mainframe (){
 		this.setTitle("Patientenverwaltung");
@@ -16,5 +18,9 @@ public class Mainframe extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	
 		menuleiste = new Menuleiste(this);
+		
+		//StationslistePanel
+		stationslistepanel = new StationslistePanel(this);
+		this.getContentPane().add(stationslistepanel, BorderLayout.SOUTH);
 	}
 }
