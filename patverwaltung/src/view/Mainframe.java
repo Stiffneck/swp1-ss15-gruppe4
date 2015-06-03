@@ -19,7 +19,7 @@ public class Mainframe extends JFrame {
 	
 		menuleiste = new Menuleiste(this);
 		
-		//StationslistePanelgd
+		//StationslistePanelgvv
 		stationslistepanel = new StationslistePanel(this);
 		this.getContentPane().add(stationslistepanel, BorderLayout.SOUTH);
 	}
