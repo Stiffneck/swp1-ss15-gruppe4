@@ -1,12 +1,9 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -15,7 +12,7 @@ public class Menuleiste extends MenuBar {
 	private Mainframe mainframe;
 	private JMenuItem datei,patient,hilfe;
 	public Menuleiste(Mainframe mainframe){
-		this.mainframe= mainframe;
+		this.setMainframe(mainframe);
 	//MenuBar
 		JMenuBar bar = new JMenuBar();
 	
@@ -62,6 +59,12 @@ public class Menuleiste extends MenuBar {
 		mainframe.setJMenuBar(bar);
 		bar.setVisible(true);
 		
+	}
+	public Mainframe getMainframe() {
+		return mainframe;
+	}
+	public void setMainframe(Mainframe mainframe) {
+		this.mainframe = mainframe;
 	}
 		
 }
