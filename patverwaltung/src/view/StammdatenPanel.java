@@ -145,7 +145,7 @@ public class StammdatenPanel extends JPanel  {
 
 	}
 
-	private void setLayout(GridBagLayout gl) {
+//	private void setLayout(GridBagLayout gl) {
 		// TODO Auto-generated method stub
 		
 	}
