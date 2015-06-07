@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ekgViewer.gui.Utility;
+import view.Utility;
 import model.Patient;
 
 public class StammdatenPanel extends JPanel  {
@@ -99,7 +99,7 @@ public class StammdatenPanel extends JPanel  {
 		this.add(geschlechtL, gbc);
 		gbc = Utility.makegbc(1, 3, 1, 1);
 		this.add(geschlechtT, gbc);
-		geschlechtT.setText(patient.getGeschlecht());
+		geschlechtT.setText(""+patient.getGeschlecht());
 		geschlechtT.setMinimumSize(new Dimension(150, 30));
 
 		DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -132,7 +132,7 @@ public class StammdatenPanel extends JPanel  {
 		this.add(versicherungs_nummerL, gbc);
 		gbc = Utility.makegbc(1, 9, 1, 1);
 		this.add(versicherungs_nummerT, gbc);
-		versicherungs_nummerT.setText(patient.getVersicherungs_nummer());
+		versicherungs_nummerT.setText(""+patient.getVersicherungs_nummer());
 		versicherungs_nummerT.setMinimumSize(new Dimension(150, 30));
 
 		gbc = Utility.makegbc(0, 10, 1, 1);
@@ -150,6 +150,6 @@ public class StammdatenPanel extends JPanel  {
 		
 	}
 		
-	}
+	
 
 
