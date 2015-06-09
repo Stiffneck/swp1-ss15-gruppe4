@@ -35,7 +35,7 @@ public void showPatientliste(){
 	
 }
 /**
- * Leert die Patientendaten und das EKG
+ * 
  */
 protected void clear() {
 	

@@ -24,16 +24,20 @@ public class Utility {
 	 *            Hoehe des Grafikobjekts
 	 * @return GridBagConstraints fuer das jeweilige Grafikobjekt
 	 */
-	static public GridBagConstraints makegbc(int x, int y, int width, int height) {
+	static public GridBagConstraints makegbc(int x, int y, int width, int height, int anchor,int fill) {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = x;
 		gbc.gridy = y;
 		gbc.gridwidth = width;
 		gbc.gridheight = height;
-
-		// gbc.insets = new Insets(2, 5, 2, 5);
-		gbc.weightx = 1.0;
-		gbc.weighty = 1.0;
+		gbc.anchor = anchor;
+		gbc.fill = fill;
+		
+		gbc.weightx = 1;
+		gbc.weighty = 1;
+		gbc.insets = new Insets(1, 1, 1, 1);
+		gbc.ipadx = 1;
+		gbc.ipady = 0;
 		return gbc;
 	}
 }
