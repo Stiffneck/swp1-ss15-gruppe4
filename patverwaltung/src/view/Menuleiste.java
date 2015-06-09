@@ -3,14 +3,21 @@ package view;
 import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import controller.Patientenverwaltung;
+
 
 public class Menuleiste extends MenuBar {
+	private Patientenverwaltung patientenverwaltung;
 	private Mainframe mainframe;
 	private JMenuItem datei,patient,hilfe;
+	private String info;
 	public Menuleiste(Mainframe mainframe){
 		this.setMainframe(mainframe);
 	//MenuBar
@@ -39,7 +46,8 @@ public class Menuleiste extends MenuBar {
 		JMenuItem listeausgeben = new JMenuItem("Liste ausgeben");
 		listeausgeben.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//methode
+				//methode zum Anzeigen des StationslistePanels
+				mainframe.showPatientliste();
 			}
 		});
 		patient.add(listeausgeben);
@@ -50,6 +58,20 @@ public class Menuleiste extends MenuBar {
 		JMenuItem entlassen = new JMenuItem("Entassen");
 		patient.add(entlassen);
 		
+		JMenuItem help = new JMenuItem("Hilfe anzeigen");
+		help.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				
+					try {
+						callHelpDialog();
+					} catch (IOException e1) {
+						System.out.println("fehler");
+					}
+				
+			}
+		});
+		hilfe.add(help);
 	//Eintraege zum MenuBar hinzufuegen
 		bar.add(datei);
 		bar.add(patient);
@@ -60,6 +82,20 @@ public class Menuleiste extends MenuBar {
 		bar.setVisible(true);
 		
 	}
+	
+	private void callHelpDialog() throws IOException {
+		try{
+		String res = "Nicht verfuegbar";
+		JOptionPane.showMessageDialog(mainframe,res, info,
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+		finally{
+			
+		}
+
+	}
+	
+	
 	public Mainframe getMainframe() {
 		return mainframe;
 	}

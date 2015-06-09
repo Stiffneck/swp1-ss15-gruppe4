@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class VerlegungsDialog {
-	public static void main( String args[] )  {
+	public VerlegungsDialog(){
 		String optionen [] = {"a","b","c"};
 		String station = (String) JOptionPane.showInputDialog(null,"Station", "Verlegung",
 				JOptionPane.QUESTION_MESSAGE,
