@@ -30,7 +30,7 @@ public class StationsauswahlPanel extends JPanel {
 		this.add(stationsname, gbc);
 		
 		gbc = Utility.makegbc(1, 0, 1, 1, GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
-		button = new JButton("Anzeigen");
+		button = new JButton("Ausgeben");
 		button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//methode zum Anzeigen aller Patienten

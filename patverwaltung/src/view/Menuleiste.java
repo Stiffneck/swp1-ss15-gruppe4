@@ -62,12 +62,9 @@ public class Menuleiste extends MenuBar {
 		help.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				
-					try {
-						callHelpDialog();
-					} catch (IOException e1) {
-						System.out.println("fehler");
-					}
+				String res = "Nicht verfuegbar";
+				JOptionPane.showMessageDialog(mainframe,res, info,
+							JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		});
@@ -81,18 +78,6 @@ public class Menuleiste extends MenuBar {
 		mainframe.setJMenuBar(bar);
 		bar.setVisible(true);
 		
-	}
-	
-	private void callHelpDialog() throws IOException {
-		try{
-		String res = "Nicht verfuegbar";
-		JOptionPane.showMessageDialog(mainframe,res, info,
-					JOptionPane.INFORMATION_MESSAGE);
-		}
-		finally{
-			
-		}
-
 	}
 	
 	
