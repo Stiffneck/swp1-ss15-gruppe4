@@ -10,11 +10,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import controller.Patientenverwaltung;
 
 
 public class Menuleiste extends MenuBar {
-	private Patientenverwaltung patientenverwaltung;
+	
 	private Mainframe mainframe;
 	private JMenuItem datei,patient,hilfe;
 	private String info;
