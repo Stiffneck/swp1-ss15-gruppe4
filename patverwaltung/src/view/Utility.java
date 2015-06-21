@@ -24,7 +24,7 @@ public class Utility {
 	 *            Hoehe des Grafikobjekts
 	 * @return GridBagConstraints fuer das jeweilige Grafikobjekt
 	 */
-	static public GridBagConstraints makegbc(int x, int y, int width, int height, int anchor,int fill) {
+	static public GridBagConstraints makeGbc(int x, int y, int width, int height, int anchor,int fill) {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = x;
 		gbc.gridy = y;

@@ -25,11 +25,11 @@ public class StationsauswahlPanel extends JPanel {
 		GridBagLayout gbl = new GridBagLayout();
 		this.setLayout(gbl);
 		
-		GridBagConstraints gbc = Utility.makegbc(0, 0, 1, 1, GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		GridBagConstraints gbc = Utility.makeGbc(0, 0, 1, 1, GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
 		stationsname = new JLabel("Station: ");
 		this.add(stationsname, gbc);
 		
-		gbc = Utility.makegbc(1, 0, 1, 1, GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		gbc = Utility.makeGbc(1, 0, 1, 1, GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
 		button = new JButton("Ausgeben");
 		button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){

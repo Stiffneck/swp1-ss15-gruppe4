@@ -3,16 +3,29 @@ package view;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+
 
 import view.Utility;
 import model.Patient;
 
 public class StammdatenPanel extends JPanel  {
+	
+	private static final DateTimeFormatter df = DateTimeFormatter
+			.ofPattern("dd.MM.yyyy");
+	
 	private JLabel vornameL = new JLabel("Vorname:");
 	private JLabel nachnameL = new JLabel("Nachname:");
 	private JLabel strasseL = new JLabel("Straﬂe:");
@@ -38,118 +51,140 @@ public class StammdatenPanel extends JPanel  {
 	private JTextField versicherungs_nameT = new JTextField(30);
 	private JTextField versicherungs_nummerT = new JTextField(30);
 	private JTextField privatT = new JTextField(30);
-
-	public StammdatenPanel(Patient patient){
+	private String fehler, patientendatenunvollstaendig;
+	private Mainframe mainframe;
+	private Patient patient;
+	private JButton button;
+	public StammdatenPanel(Mainframe mainframe,Patient patient){
+		this.mainframe = mainframe;
 		GridBagLayout gl = new GridBagLayout();
 		this.setLayout(gl);
 
-//		GridBagConstraints gbc = Utility.makegbc(0, 1, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(vornameL, gbc);
-//		gbc = Utility.makegbc(1, 1, 1, 1);
-//		this.add(vornameT, gbc);
-//		vornameT.setText(patient.getVorname());
-//		vornameT.setMinimumSize(new Dimension(150, 30));
-//		gbc.anchor = GridBagConstraints.WEST;
-//
-//
-//		gbc = Utility.makegbc(0, 2, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(nachnameL, gbc);
-//		gbc = Utility.makegbc(1, 2, 1, 1);
-//		this.add(nachnameT, gbc);
-//		nachnameT.setText(patient.getNachname());
-//		nachnameT.setMinimumSize(new Dimension(150, 30));
-//		
-//		gbc = Utility.makegbc(0, 3, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(strasseL, gbc);
-//		gbc = Utility.makegbc(1, 2, 1, 1);
-//		this.add(strasseT, gbc);
-//		strasseT.setText(patient.getNachname());
-//		strasseT.setMinimumSize(new Dimension(150, 30));
-//		
-//		gbc = Utility.makegbc(0, 3, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(hausnummerL, gbc);
-//		gbc = Utility.makegbc(1, 2, 1, 1);
-//		this.add(hausnummerT, gbc);
-//		hausnummerT.setText(patient.getNachname());
-//		hausnummerT.setMinimumSize(new Dimension(150, 30));
-//		
-//		gbc = Utility.makegbc(0, 4, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(stadtL, gbc);
-//		gbc = Utility.makegbc(1, 2, 1, 1);
-//		this.add(stadtT, gbc);
-//		stadtT.setText(patient.getNachname());
-//		stadtT.setMinimumSize(new Dimension(150, 30));
-//		
-//		gbc = Utility.makegbc(0, 5, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(plzL, gbc);
-//		gbc = Utility.makegbc(1, 2, 1, 1);
-//		this.add(plzT, gbc);
-//		plzT.setText(patient.getNachname());
-//		plzT.setMinimumSize(new Dimension(150, 30));
-//
-//
-//		gbc = Utility.makegbc(0, 6, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(geschlechtL, gbc);
-//		gbc = Utility.makegbc(1, 3, 1, 1);
-//		this.add(geschlechtT, gbc);
-//		geschlechtT.setText(""+patient.getGeschlecht());
-//		geschlechtT.setMinimumSize(new Dimension(150, 30));
-//
-//		DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-//		gbc = Utility.makegbc(0, 6, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(geburtstagL, gbc);
-//		gbc = Utility.makegbc(1, 4, 1, 1);
-//		this.add(geburtstagT, gbc);
-//		geburtstagT.setText(sdf.format(patient.getGeburtstag()));
-//		geburtstagT.setMinimumSize(new Dimension(150, 30));
-//		
-//		gbc = Utility.makegbc(0, 7, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(alterL, gbc);
-//		gbc = Utility.makegbc(1, 2, 1, 1);
-//		this.add(alterT, gbc);
-//		alterT.setText(patient.getNachname());
-//		alterT.setMinimumSize(new Dimension(150, 30));
-//		
-//		gbc = Utility.makegbc(0, 8, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(versicherungs_nameL, gbc);
-//		gbc = Utility.makegbc(1, 8, 1, 1);
-//		this.add(versicherungs_nameT, gbc);
-//		versicherungs_nameT.setText(patient.getVersicherungs_name());
-//		versicherungs_nameT.setMinimumSize(new Dimension(150, 30));
-//
-//		gbc = Utility.makegbc(0, 9, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(versicherungs_nummerL, gbc);
-//		gbc = Utility.makegbc(1, 9, 1, 1);
-//		this.add(versicherungs_nummerT, gbc);
-//		versicherungs_nummerT.setText(""+patient.getVersicherungs_nummer());
-//		versicherungs_nummerT.setMinimumSize(new Dimension(150, 30));
-//
-//		gbc = Utility.makegbc(0, 10, 1, 1);
-//		gbc.anchor = GridBagConstraints.EAST;
-//		this.add(privatL, gbc);
-//		gbc = Utility.makegbc(1, 10, 1, 1);
-//		this.add(privatT, gbc);
-//		privatT.setText(patient.isPrivat() + "");
-//		privatT.setMinimumSize(new Dimension(150, 30));
+		GridBagConstraints gbc = Utility.makeGbc(0, 1, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(vornameL, gbc);
+		gbc = Utility.makeGbc(1, 1, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(vornameT, gbc);
+
+		
+		gbc = Utility.makeGbc(0, 2, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(nachnameL, gbc);
+		gbc = Utility.makeGbc(1, 2, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(nachnameT, gbc);
+
+		
+		gbc = Utility.makeGbc(0, 3, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(strasseL, gbc);
+		gbc = Utility.makeGbc(1, 2, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(strasseT, gbc);
+
+		
+		gbc = Utility.makeGbc(0, 3, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(hausnummerL, gbc);
+		gbc = Utility.makeGbc(1, 2, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(hausnummerT, gbc);
+
+		
+		gbc = Utility.makeGbc(0, 4, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(stadtL, gbc);
+		gbc = Utility.makeGbc(1, 2, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(stadtT, gbc);
+
+		
+		gbc = Utility.makeGbc(0, 5, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(plzL, gbc);
+		gbc = Utility.makeGbc(1, 2, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(plzT, gbc);
+
+
+
+		gbc = Utility.makeGbc(0, 6, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(geschlechtL, gbc);
+		gbc = Utility.makeGbc(1, 3, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(geschlechtT, gbc);
+
+
+		DateTimeFormatter sdf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+		gbc = Utility.makeGbc(0, 6, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(geburtstagL, gbc);
+		gbc = Utility.makeGbc(1, 4, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(geburtstagT, gbc);
+
+		
+		gbc = Utility.makeGbc(0, 7, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(alterL, gbc);
+		gbc = Utility.makeGbc(1, 2, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(alterT, gbc);
+
+		
+		gbc = Utility.makeGbc(0, 8, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(versicherungs_nameL, gbc);
+		gbc = Utility.makeGbc(1, 8, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(versicherungs_nameT, gbc);
+
+
+		gbc = Utility.makeGbc(0, 9, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(versicherungs_nummerL, gbc);
+		gbc = Utility.makeGbc(1, 9, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(versicherungs_nummerT, gbc);
+
+
+		gbc = Utility.makeGbc(0, 10, 1, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+		this.add(privatL, gbc);
+		gbc = Utility.makeGbc(1, 10, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		this.add(privatT, gbc);
+		
+		gbc = Utility.makeGbc(0, 12, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		button = new JButton("Ok");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//methode zum Anzeigen aller Patienten
+				
+			}
+		});
+ 	    this.add(button,gbc);
+ 	   gbc = Utility.makeGbc(1, 12, 1, 1,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		button = new JButton("Abbrechen");
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//methode zum Anzeigen aller Patienten
+				
+			}
+		});
+	    this.add(button,gbc);
+		this.validate();
+		
+	}
+	
+	/**
+	 *  Speichert die in der Oberflaeche eingegebenen Patientendaten
+	 * @param patient
+	 * @throws IOException
+	 */
+	private void savePatientData(Patient patient) throws IOException {
+
+		try {
+			patient.setVorname(vornameT.getText());
+			patient.setNachname(nachnameT.getText());
+			patient.setGeschlecht(geschlechtT.getText().charAt(0));
+			patient.setGeburtstag(LocalDate.parse(
+						geburtstagT.getText(), df));
+			patient.setStrasse(strasseT.getText());
+			patient.setHausnr(hausnummerT.getText());
+			patient.setStadt(stadtT.getText());
+			patient.setPlz(Integer.parseInt(plzT.getText()));
+
+		} catch (IllegalArgumentException e) {
+			JOptionPane.showMessageDialog(null,
+					patientendatenunvollstaendig, fehler,
+					JOptionPane.INFORMATION_MESSAGE);
+		}
 
 	}
-
-//	private void setLayout(GridBagLayout gl) {
+	private void setLayout(GridBagLayout gl) {
 		// TODO Auto-generated method stub
 		
 	}
-		
+}	
 	
 
 

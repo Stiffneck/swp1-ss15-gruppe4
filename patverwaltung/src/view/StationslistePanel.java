@@ -43,20 +43,20 @@ public class StationslistePanel extends JPanel {
 
 				// Patientendaten definieren, layouten und zum Container
 
-				GridBagConstraints gbc = Utility.makegbc(0, 0, 2, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
+				GridBagConstraints gbc = Utility.makeGbc(0, 0, 2, 1,GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
 				vornameLabel = new JLabel("Vorname: ");
 				this.add(vornameLabel, gbc);
 
-				gbc = Utility.makegbc(1, 0, 1, 1, GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+				gbc = Utility.makeGbc(1, 0, 1, 1, GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
 				vornameTField = new JTextField(20);
 				this.add(vornameTField, gbc);
 
-				gbc = Utility.makegbc(0, 1, 1, 1, GridBagConstraints.EAST,
+				gbc = Utility.makeGbc(0, 1, 1, 1, GridBagConstraints.EAST,
 						GridBagConstraints.HORIZONTAL);
 				nachnameLabel = new JLabel("");
 				this.add(nachnameLabel, gbc);
 
-				gbc = Utility.makegbc(1, 1, 1, 1, GridBagConstraints.WEST,
+				gbc = Utility.makeGbc(1, 1, 1, 1, GridBagConstraints.WEST,
 						GridBagConstraints.HORIZONTAL);
 				nachnameTField = new JTextField(20);
 				this.add(nachnameTField, gbc);

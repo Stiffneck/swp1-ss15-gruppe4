@@ -40,6 +40,12 @@ public class Menuleiste extends MenuBar {
 		patient.add(suchen);
 		
 		JMenuItem aufnehmen = new JMenuItem("Aufnehmen");
+		aufnehmen.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//methode zum Anzeigen des StationslistePanels
+				mainframe.showPatientenaufnahme();
+			}
+		});
 		patient.add(aufnehmen);
 		
 		JMenuItem listeausgeben = new JMenuItem("Liste ausgeben");
