@@ -2,12 +2,14 @@ package view;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -25,11 +27,23 @@ public class StationsauswahlPanel extends JPanel {
 		GridBagLayout gbl = new GridBagLayout();
 		this.setLayout(gbl);
 		
+		
 		GridBagConstraints gbc = Utility.makeGbc(0, 0, 1, 1, GridBagConstraints.EAST,GridBagConstraints.HORIZONTAL);
 		stationsname = new JLabel("Station: ");
 		this.add(stationsname, gbc);
 		
-		gbc = Utility.makeGbc(1, 0, 1, 1, GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
+		gbc = Utility.makeGbc(1, 0, 1, 1, GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL);
+		JComboBox stationsliste = new JComboBox();
+//		stationsliste.setSelectedIndex();
+		stationsliste.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//methode 
+				
+			}
+		});
+		
+		this.add(stationsliste);
+		gbc = Utility.makeGbc(2, 0, 1, 1, GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL);
 		button = new JButton("Ausgeben");
 		button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -37,7 +51,8 @@ public class StationsauswahlPanel extends JPanel {
 				
 			}
 		});
- 	    this.add(button,gbc);
+		button.setPreferredSize(new Dimension(50,20));
+		this.add(button,gbc);
 		
  	    
  	    this.setVisible(true);

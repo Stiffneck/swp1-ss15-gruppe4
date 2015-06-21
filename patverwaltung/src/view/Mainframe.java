@@ -21,6 +21,7 @@ public class Mainframe extends JFrame {
 		this.setPreferredSize(new Dimension(900, 900));
 		this.setBackground(Color.WHITE);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		stationslistepanel = new StationslistePanel(this);
 		stationsauswahlpanel = new StationsauswahlPanel(this);
 		menuleiste = new Menuleiste(this);
